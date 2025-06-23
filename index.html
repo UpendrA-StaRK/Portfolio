@@ -413,32 +413,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    
+    // Show loading state
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
     try {
-      // Get form data
+      // Prepare data (using POST method for better security)
       const formData = new FormData(form);
-      const object = Object.fromEntries(formData.entries());
-
-      // POST JSON
+      const object = {};
+      formData.forEach((value, key) => object[key] = value);
+      
+      // Send data to Google Apps Script
       const response = await fetch(SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(object),
+        mode: 'no-cors'
       });
 
-      if (!response.ok) throw new Error(`Server error: ${response.status}`);
-      const result = await response.json();
+      // Success handling
       alert('Message sent successfully!');
       form.reset();
     } catch (error) {
       console.error('Error:', error);
       alert('Oops! Something went wrong. Please try again.');
     } finally {
+      // Reset button state
       submitBtn.innerHTML = originalBtnText;
       submitBtn.disabled = false;
     }
