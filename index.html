@@ -408,47 +408,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwgMpwCYKJQ393LB6oJWFRB6tHY2cTYyxsnYYOgFm3_B4bi0p8u-YLg0bLPathVZSJcg/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzrhh8k4YdCzAFxmFQdmjH5M7acfN8hlNmyIwTMHz065SdC8pQ9JvpxATI1Vtm_UvIeLQ/exec";
   const form = document.getElementById('contact-form');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Show loading state
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value
+    };
+
     try {
-      // Prepare data (using POST method for better security)
-      const formData = new FormData(form);
-      const object = {};
-      formData.forEach((value, key) => object[key] = value);
-      
-      // Send data to Google Apps Script
-      const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(object),
-        mode: 'no-cors'
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        mode: "no-cors"
       });
 
-      // Success handling
-      alert('Message sent successfully!');
+      alert('✅ Message sent successfully!');
       form.reset();
     } catch (error) {
       console.error('Error:', error);
-      alert('Oops! Something went wrong. Please try again.');
+      alert('❌ Something went wrong. Please try again.');
     } finally {
-      // Reset button state
       submitBtn.innerHTML = originalBtnText;
       submitBtn.disabled = false;
     }
   });
 </script>
+
 
 
 
