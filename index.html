@@ -2,9 +2,7 @@
 
   <title>Portfolio</title>
 
-  
-    <meta property="og:url" content="https://www.algouniversity.com/">
-    <meta property="og:title" content="Portfolio">
+  <meta property="og:title" content="Portfolio">
   
   
 
@@ -20,7 +18,7 @@
 
 <link rel="icon" href="images/favicon-circular.png" type="image/png">
 
-<!-- <link rel="icon" href="images/icon.ico" type="image/x-iconz"> -->
+
 <link rel="stylesheet" href="css/global_css.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
@@ -44,68 +42,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KJSX3DG5');</script>
 
   <style>
-
-    .logos.colleges img {
-      height: 5rem;
-    }
-
-    @media (max-width: 768px) {
-
-      :root {
-        --navbar-height: 0;
-      }
-
-      .mobile-text-justify {
-        text-align: justify;
-      }
-      .order-first-sm {
-        order: -1;
-      }
-
-      .swiper-img .swiper-slide {
-        padding: 0;
-      }
-      .swiper-img .content {
-        bottom: 0.4rem;
-      }
-
-      #hero .sub-heading {
-        font-size: 2.6rem;
-        line-height: 3rem;
-      }
-      #hero .p-lg {
-        --font-size: 1.1rem;
-      }
-      .fa-ul {
-        font-size: 1rem;
-      }
-      #outcomes .col-lg-3 {
-        padding-bottom: 0;
-      }
-      .card-service .title {
-        font-size: 18px;
-      }
-      .sub-text, .timeline h4, .timeline p {
-        font-size: 1rem;
-      }
-      .nurture-ad p {
-        font-size: 1.25rem;
-      }
-
-      .faq > div {
-        padding: 0;
-      }
-      .accordion label h3 {
-        font-size: 1rem;
-      }
-      .accordion .content * {
-        font-size: 0.9rem;
-      }
-      .cta-div {
-        padding: 1rem 1rem 2rem 1rem;
-      }
-
-    }
 
     .skill-item span {
       margin-left: 0.5rem;
@@ -195,15 +131,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           and React with experience building AI-powered and scalable web solutions.</p> 
           <p>Currently enhancing skills in software development, machine learning and seeking opportunities to apply them in real-world projects.</p>
       </div>
-      <!-- <div class="about-stats">
-        <div class="stat-item">
-          <h3 class="text-gradient">2+</h3>
-          <p>Years Experience</p>
-        </div>
-        <div class="stat-item">
-          <h3 class="text-gradient">10+</h3>
-          <p>Projects Completed</p>
-        </div> -->
         <div class="stat-item">
           <h3 class="text-gradient">Education</h3>
           <p>National Institute of Technology, Durgapur</p>
@@ -440,12 +367,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="section-content container">
     <h2 class="section-heading text-gradient text-gradient-1">Get In Touch</h2>
     <div class="contact-content">
+
       <div class="contact-info">
         <div class="contact-item br-corner-gradient">
           <i class="fas fa-envelope"></i>
           <h3>Email</h3>
           <p>paluruupendra88@gmail.com</p>
-          </div>
+        </div>
         <div class="contact-item br-corner-gradient">
           <i class="fas fa-phone"></i>
           <h3>Phone</h3>
@@ -454,28 +382,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="contact-item br-corner-gradient">
           <i class="fas fa-map-marker-alt"></i>
           <h3>Location</h3>
-          <p>Visakhapatnam ,Andhra Pradesh</p>
-            </div>
-          </div>
-      
-      <form class="contact-form br-corner-gradient">
-        <div class="form-group">
-          <input type="text" placeholder="Your Name" required>
+          <p>Visakhapatnam, Andhra Pradesh</p>
         </div>
-        <div class="form-group">
-          <input type="email" placeholder="Your Email" required>
       </div>
+
+      <!-- Updated contact form -->
+      <form id="contact-form" class="contact-form br-corner-gradient">
         <div class="form-group">
-          <input type="text" placeholder="Subject" required>
+          <input type="text" name="name" placeholder="Your Name" required>
         </div>
         <div class="form-group">
-          <textarea placeholder="Your Message" required></textarea>
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <input type="text" name="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" required></textarea>
         </div>
         <button type="submit" class="btn btn-4">Send Message</button>
       </form>
+
     </div>
   </div>
 </section>
+
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwgMpwCYKJQ393LB6oJWFRB6tHY2cTYyxsnYYOgFm3_B4bi0p8u-YLg0bLPathVZSJcg/exec";
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData).toString(); // converts to query string
+
+    try {
+      const response = await fetch(`${SCRIPT_URL}?${data}`, { method: "GET" });
+      const result = await response.text();
+
+      alert('Message sent successfully!');
+      form.reset();
+    } catch (error) {
+      console.error('Error!', error);
+      alert('Oops! Something went wrong.');
+    }
+  });
+</script>
+
 
 
 
@@ -500,14 +454,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- <div class="footer-col" style="width: 40%; min-width: 220px; text-align: right;">
-        <h4>Education</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li>National Institute of Technology, Durgapur</li>
-          <li>Bachelor of Technology in Mechanical Engineering</li>
-          <li>2022 - 2026</li>
-        </ul>
-      </div> -->
 
     </div>
 
@@ -518,7 +464,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Scripts -->
 
 <script src="js/swiper-bundle.min.js"></script>
-
 <script>
 
 /* Scroll Navigation Highlight */
@@ -529,61 +474,27 @@ const navLinks = document.querySelectorAll('header nav a');
 let currentSection = 'section-1';
 
 window.onscroll = () => {
-
   sections.forEach(section => {
-
     let top = window.scrollY;
     let navbarHeight = 68.4;
     let offset = section.offsetTop - navbarHeight - section.clientHeight / 3;
-
     if (top >= offset && top < offset + section.offsetHeight) {
       currentSection = section.id;
     }
-
   });
-
   navLinks.forEach(navLink => {
-
     navLink.classList.remove('active');
-
     if (navLink.href.includes(currentSection)) navLink.classList.add('active');
-
   });
-
 };
 
-/* On Load */
-
+/* Typewriter Animation */
 document.addEventListener('DOMContentLoaded', () => {
-
-  updateIframeSrc();
-
-  /* Accordion */
-
-  const labels = document.querySelectorAll('.accordion .item label');
-
-  labels.forEach(label => {
-    label.addEventListener('click', function(event) {
-      if (this.previousElementSibling.checked) {
-        event.preventDefault();
-        this.previousElementSibling.checked = false;
-      }
-    });
-  });
-
-  /* Logos Slider */
-
-  const logos = document.querySelectorAll('.logos');
-
-  logos.forEach(logo => logo.appendChild(logo.querySelector('.logos-slide').cloneNode(true)));
-
-  /* Typewriter Animation */
   const typewriterTexts = ["AI Enthusiast", "Innovator", "Developer"];
   const typewriterElement = document.querySelector('.typewriter');
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-
   function typeWriter() {
     const currentText = typewriterTexts[textIndex];
     if (!isDeleting) {
@@ -591,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
       charIndex++;
       if (charIndex === currentText.length) {
         isDeleting = true;
-        setTimeout(typeWriter, 2000); // Increased pause before deleting
+        setTimeout(typeWriter, 2000);
         return;
       }
     } else {
@@ -604,210 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setTimeout(typeWriter, isDeleting ? 80 : 150);
   }
-
-  // Start typewriter animation when DOM is loaded
   typeWriter();
-
-});
-
-/* Swiper */
-
-// Champions : 
-
-const swiper3 = new Swiper('.swiper-3', {
-
-  loop: true,
-  speed: 800,
-  threshold: 5,
-  slidesPerView: 1,
-  spaceBetween: 30,
-  grabCursor: true,
-  centeredSlides: false,
-  direction: 'horizontal',
-
-  autoplay: {
-    delay: 6000,
-    disableOnInteraction: true,
-  },
-
-  pagination: {
-    clickable: true,
-    dynamicBullets: true,
-    el: '.swiper-pagination-3',
-  },
-
-  breakpoints: {
-    '@0.00': { slidesPerView: 1 },
-    '@0.75': { slidesPerView: 1 },
-    '@1.00': { slidesPerView: 1 },
-    '@1.50': { slidesPerView: 1 },
-  }
-
-});
-
-// Mentors : 
-
-const swiper4 = new Swiper('.swiper-4', {
-
-  loop: true,
-  speed: 800,
-  threshold: 5,
-  slidesPerView: 3,
-  spaceBetween: 0,
-  grabCursor: true,
-  centeredSlides: false,
-  direction: 'horizontal',
-
-  autoplay: {
-    delay: 6000,
-    disableOnInteraction: true,
-  },
-
-  pagination: {
-    clickable: true,
-    dynamicBullets: true,
-    el: '.swiper-pagination-4',
-  },
-
-  breakpoints: {
-    '@0.00': { slidesPerView: 1 },
-    '@0.75': { slidesPerView: 1 },
-    '@1.00': { slidesPerView: 2 },
-    '@1.50': { slidesPerView: 3 },
-  }
-
-});
-
-// Testimonials : 
-
-const swiper1 = new Swiper('.swiper-1', {
-
-  loop: true,
-  speed: 800,
-  threshold: 5,
-  slidesPerView: 2,
-  spaceBetween: 30,
-  grabCursor: true,
-  centeredSlides: true,
-  direction: 'horizontal',
-
-  autoplay: {
-    delay: 9000,
-    disableOnInteraction: true,
-  },
-
-  pagination: {
-    clickable: true,
-    dynamicBullets: true,
-    el: '.swiper-pagination-1',
-  },
-
-  breakpoints: {
-    '@0.00': { slidesPerView: 1 },
-    '@0.75': { slidesPerView: 1 },
-    '@1.00': { slidesPerView: 1 },
-    '@1.50': { slidesPerView: 2 },
-  }
-
-});
-
-// Results : 
-
-const swiper2 = new Swiper('.swiper-2', {
-
-  loop: true,
-  speed: 800,
-  threshold: 5,
-  slidesPerView: 3,
-  spaceBetween: 30,
-  grabCursor: true,
-  centeredSlides: false,
-  direction: 'horizontal',
-
-  autoplay: {
-    delay: 6000,
-    disableOnInteraction: true,
-  },
-
-  pagination: {
-    clickable: true,
-    dynamicBullets: true,
-    el: '.swiper-pagination-2',
-  },
-
-  breakpoints: {
-    '@0.00': { slidesPerView: 1 },
-    '@0.75': { slidesPerView: 1 },
-    '@1.00': { slidesPerView: 2 },
-    '@1.50': { slidesPerView: 3 },
-  }
-
-});
-
-/* Query Param */
-
-const getQueryParam = (key) => new URL(window.location.href).searchParams.get(key) || '';
-
-/* Methods */
-
-function updateIframeSrc() {
-  let location = 'Amsterdam';
-  let airtable_link = 'https://airtable.com/appQZHw3Eyf15I78o/pagxyg2XqsUjcAJNU/form';
-  let airtable_code = airtable_link.substring('https://airtable.com/'.length);
-  let embed_link = `https://airtable.com/embed/${ airtable_code }?prefill_Source=Embedded&prefill_City=${ location }&hide_Source=true&hide_Influencer=true&hide_City=true`;
-  $('#airtable-form-embed').attr('src', embed_link);
-}
-
-function updateAirtableLinks(prefill_Source) {
-  let location = 'Amsterdam';
-  let airtable_link = `https://airtable.com/appQZHw3Eyf15I78o/pagxyg2XqsUjcAJNU/form?prefill_Source=${ prefill_Source }&prefill_City=${ location }&hide_Source=true&hide_Influencer=true&hide_City=true`;
-  if (prefill_Source === 'Embedded')
-    airtable_link = `https://airtable.com/appQZHw3Eyf15I78o/pagxyg2XqsUjcAJNU/form?prefill_Source=${ prefill_Source }&prefill_City=${ location }&hide_Source=true&hide_Influencer=true&hide_City=true`;
-  let utm_source = getQueryParam('utm_source');
-  if (utm_source) airtable_link += `&prefill_Influencer=${ utm_source }`;
-  gtag('event', `${prefill_Source}_form_click`, {'event_category': 'airtable_form', 'event_label': 'landing'});
-  window.open(airtable_link, '_blank');
-}
-
-function passQueryParamToLink(page) {
-
-  let page_link = window.location.protocol + '//' + window.location.host;
-  if (page === 'course')
-    page_link += '/coursework/';
-  else if (page === 'course-accelerator')
-    page_link += '/accelerate/coursework/';
-  else if (page === 'team')
-    page_link += '/team/';
-  else if (page === 'accelerator')
-    page_link += '/accelerator/';
-  else if (page == 'event')
-    page_link += '/event/au-devday-15-june/';
-  else if (page == 'events')
-    page_link += '/events/';
-  else if (page == 'main')
-    page_link += '/main/';
-  else
-    page_link = page_link;
-
-  let page_link_url = new URL(page_link);
-  let utm_source = getQueryParam('utm_source');
-  if (utm_source) page_link_url.searchParams.append('utm_source', utm_source);
-
-  gtag('event', `${ page }_click`, {'event_category': page, 'event_label': 'landing'});
-
-  if (page === 'accelerator')
-    window.open(page_link_url.href, '_self');
-  else
-    window.open(page_link_url.href, '_blank');
-
-}
-
-/* Radio */
-
-/* Leap event listener removed */
-
-document.getElementById('accelerator')?.addEventListener('change', function () {
-  if (this.checked) window.location.href = '/accelerator/';
 });
 
 // Mobile Menu Toggle
@@ -828,7 +536,6 @@ check.addEventListener('change', function() {
   }
 });
 
-// Close menu when clicking a nav link
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     check.checked = false;
@@ -840,8 +547,4 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 </script>
 
-
-
-
-</body></html>
 </body></html>
